@@ -11,7 +11,7 @@ class MenuTableViewController: UITableViewController {
     let menu = [
         [
             "Set Map Language to English",
-            "Set Base Layer to HYBRID",
+            "Set Base Layer to Hybrid",
             "Add Traffic Layer",
             "Remove Traffic Layer",
             "Clear All Layers",
@@ -20,9 +20,8 @@ class MenuTableViewController: UITableViewController {
             "Add WMS Layer",
             "Add TMS Layer",
             "Add WTMS Layer",
+            "Enable Filter",
             "Remove Last Custom Layer"
-            //"Add Google Layer",
-            //"Map Overview"
         ],
         [
             "Add Marker from URL",
@@ -36,16 +35,15 @@ class MenuTableViewController: UITableViewController {
             "Add Custom Popup",
             "Add Popup from HTML",
             "Remove Last Popup",
-//            "Start Bounce Marker",
-//            "Stop Bounce Marker",
             "Move Marker",
+            "Rotate Marker",
+            "Add Sphere Place"
         ],
         [
             "Add Local Tags",
-//            "Add Sphere Tags",
-//            "Add Tags with Options",
-//            "Add Tags with Geocode",
-//            "Remove Sphere Tags",
+            "Add Sphere Tags",
+            "Add Tags with Options",
+            "Remove Sphere Tags",
             "Clear all tags"
         ],
         [
@@ -59,16 +57,6 @@ class MenuTableViewController: UITableViewController {
             "Add Donut",
             "Add Rectangle",
             "Location of Geometry"
-        ],
-        [
-//            "Add Bangkok Geometry",
-//            "Add East Region of Thailand Geometry",
-//            "Add District in Bangkok Geometry",
-//            "Add Multiple Subdistrict Geometry",
-//            "Add Province Geometry with Options",
-//            "Add Subdistrict Geometry by Name",
-//            "Add Sphere Place",
-//            "Remove Last Geometry Object"
         ],
         [
             "Get Route",
@@ -87,7 +75,8 @@ class MenuTableViewController: UITableViewController {
             "Clear Search Result"
         ],
         [
-            "Reverse Geocode"
+            "Reverse Geocode",
+            "Get Latitude Length"
         ],
         [
             "When Location Changed",
@@ -95,13 +84,12 @@ class MenuTableViewController: UITableViewController {
             "When Zoom Range Changed",
 //            "Map Ready",
             "When Map is Resized",
-            "When Click",
-            "When Drag",
-            "When Drop",
+            "When Click Map",
+            "When Start Drag Map",
+            "When Stop Drag Map",
             "When Layer Changed",
             "When Clicked Overlay",
             "When Change Overlay",
-            "When Load Overlay",
             "When Drop Overlay"
         ],
         [
@@ -109,6 +97,9 @@ class MenuTableViewController: UITableViewController {
             "Set Geolocation",
             "Get Location",
             "Set Zoom",
+            "Set Location and Zoom",
+            "Set Rotate",
+            "Set Pitch",
             "Zoom In",
             "Zoom Out",
             "Set Zoom Range",
@@ -118,18 +109,19 @@ class MenuTableViewController: UITableViewController {
             "Toggle DPad",
             "Toggle Zoombar",
             "Toggle Layer Selector",
+            "Toggle Crosshair",
             "Toggle Scale",
             "Toggle Touch Map",
-            "Toggle Drag Map",
-            "Add Button Menu",
-            "Add Custom Menu",
-            "Remove Menu"
+            "Toggle Drag Map"
         ],
         [
-            "Get Overlay Type",
+            "Click and Get Overlay Type",
             "Get Distance",
             "Get Contain",
-            "Get Near POI"
+            "Get Near POI",
+            "Add HeatMap",
+            "Add Cluster Marker",
+            "Add 3D object"
         ]
     ]
     let sectionTitle = [
@@ -137,7 +129,6 @@ class MenuTableViewController: UITableViewController {
         "Marker",
         "Tag",
         "Geometry",
-        "Administration",
         "Route",
         "Search",
         "Conversion",
@@ -208,6 +199,9 @@ class MenuTableViewController: UITableViewController {
                 delegate?.addWTMSLayer()
                 break
             case 10:
+                delegate?.enableFilter()
+                break
+            case 11:
                 delegate?.removeLayer()
                 break
             default:
@@ -249,13 +243,13 @@ class MenuTableViewController: UITableViewController {
                 delegate?.removePopup()
                 break
             case 11:
-                delegate?.startBounceMarker()
+                delegate?.moveMarker()
                 break
             case 12:
-                delegate?.stopBounceMarker()
+                delegate?.rotateMarker()
                 break
             case 13:
-                delegate?.moveMarker()
+                delegate?.addSpherePlace()
                 break
             default:
                 break
@@ -272,12 +266,9 @@ class MenuTableViewController: UITableViewController {
                 delegate?.addTagWithOption()
                 break
             case 3:
-                delegate?.addTagWithGeocode()
-                break
-            case 4:
                 delegate?.removeTag()
                 break
-            case 5:
+            case 4:
                 delegate?.clearAllTag()
                 break
             default:
@@ -321,35 +312,6 @@ class MenuTableViewController: UITableViewController {
         case 4:
             switch (indexPath.row) {
             case 0:
-                delegate?.addBangkok()
-                break
-            case 1:
-                delegate?.addEastRegion()
-                break
-            case 2:
-                delegate?.addBangkokDistrict()
-                break
-            case 3:
-                delegate?.addMultipleSubdistrict()
-                break
-            case 4:
-                delegate?.addProvinceWithOption()
-                break
-            case 5:
-                delegate?.addSubdistrictByName()
-                break
-            case 6:
-                delegate?.addSpherePlace()
-                break
-            case 7:
-                delegate?.removeGeometryObject()
-                break
-            default:
-                break
-            }
-        case 5:
-            switch (indexPath.row) {
-            case 0:
                 delegate?.getRoute()
                 break
             case 1:
@@ -376,7 +338,7 @@ class MenuTableViewController: UITableViewController {
             default:
                 break
             }
-        case 6:
+        case 5:
             switch (indexPath.row) {
             case 0:
                 delegate?.searchCentral()
@@ -393,15 +355,18 @@ class MenuTableViewController: UITableViewController {
             default:
                 break
             }
-        case 7:
+        case 6:
             switch (indexPath.row) {
             case 0:
                 delegate?.getGeoCode()
                 break
+            case 1:
+                delegate?.getLatitudeLength()
+                break
             default:
                 break
             }
-        case 8:
+        case 7:
             switch (indexPath.row) {
             case 0:
                 delegate?.locationEvent()
@@ -434,15 +399,12 @@ class MenuTableViewController: UITableViewController {
                 delegate?.overlayChangeEvent()
                 break
             case 10:
-                delegate?.overlayLoadEvent()
-                break
-            case 11:
                 delegate?.overlayDropEvent()
                 break
             default:
                 break
             }
-        case 9:
+        case 8:
             switch (indexPath.row) {
             case 0:
                 delegate?.setCustomLocation()
@@ -457,54 +419,57 @@ class MenuTableViewController: UITableViewController {
                 delegate?.setZoom()
                 break
             case 4:
-                delegate?.zoomIn()
+                delegate?.setLocationAndZoom()
                 break
             case 5:
-                delegate?.zoomOut()
+                delegate?.setRotate()
                 break
             case 6:
-                delegate?.setZoomRange()
+                delegate?.setPitch()
                 break
             case 7:
-                delegate?.getZoomRange()
+                delegate?.zoomIn()
                 break
             case 8:
-                delegate?.setBound()
+                delegate?.zoomOut()
                 break
             case 9:
-                delegate?.getBound()
+                delegate?.setZoomRange()
                 break
             case 10:
-                delegate?.toggleDPad()
+                delegate?.getZoomRange()
                 break
             case 11:
-                delegate?.toggleZoombar()
+                delegate?.setBound()
                 break
             case 12:
-                delegate?.toggleLayerSelector()
+                delegate?.getBound()
                 break
             case 13:
-                delegate?.toggleScale()
+                delegate?.toggleDPad()
                 break
             case 14:
-                delegate?.toggleTouchAndDrag()
+                delegate?.toggleZoombar()
                 break
             case 15:
-                delegate?.toggleDrag()
+                delegate?.toggleLayerSelector()
                 break
             case 16:
-                delegate?.addButtonMenu()
+                delegate?.toggleCrosshair()
                 break
             case 17:
-                delegate?.addCustomMenu()
+                delegate?.toggleScale()
                 break
             case 18:
-                delegate?.removeMenu()
+                delegate?.toggleTouchAndDrag()
+                break
+            case 19:
+                delegate?.toggleDrag()
                 break
             default:
                 break
             }
-        case 10:
+        case 9:
             switch (indexPath.row) {
             case 0:
                 delegate?.getOverlayType()
@@ -517,6 +482,15 @@ class MenuTableViewController: UITableViewController {
                 break
             case 3:
                 delegate?.nearPOI()
+                break
+            case 4:
+                delegate?.addHeatMap()
+                break
+            case 5:
+                delegate?.addClusterMarker()
+                break
+            case 6:
+                delegate?.add3DObject()
                 break
             default:
                 break

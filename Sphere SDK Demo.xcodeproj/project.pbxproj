@@ -14,7 +14,7 @@
 		0774EBD2275A354E00D4BD1A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0774EBD0275A354E00D4BD1A /* Main.storyboard */; };
 		0774EBD4275A355100D4BD1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0774EBD3275A355100D4BD1A /* Assets.xcassets */; };
 		0774EBD7275A355100D4BD1A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0774EBD5275A355100D4BD1A /* LaunchScreen.storyboard */; };
-		07D98D9B286AEB6100C5A8A0 /* SphereSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 07D98D9A286AEB6100C5A8A0 /* SphereSDK */; };
+		07FE3E982CBF8D520005609D /* SphereSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 07FE3E972CBF8D520005609D /* SphereSDK */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,7 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07D98D9B286AEB6100C5A8A0 /* SphereSDK in Frameworks */,
+				07FE3E982CBF8D520005609D /* SphereSDK in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,7 +97,7 @@
 			);
 			name = "Sphere SDK Demo";
 			packageProductDependencies = (
-				07D98D9A286AEB6100C5A8A0 /* SphereSDK */,
+				07FE3E972CBF8D520005609D /* SphereSDK */,
 			);
 			productName = "Longdo Map Test";
 			productReference = 0774EBC7275A354E00D4BD1A /* Sphere SDK Demo.app */;
@@ -128,7 +128,7 @@
 			);
 			mainGroup = 0774EBBE275A354E00D4BD1A;
 			packageReferences = (
-				07D98D99286AEB6100C5A8A0 /* XCRemoteSwiftPackageReference "sphere-ios-framework" */,
+				07FE3E962CBF8D520005609D /* XCRemoteSwiftPackageReference "sphere-ios-framework" */,
 			);
 			productRefGroup = 0774EBC8275A354E00D4BD1A /* Products */;
 			projectDirPath = "";
@@ -388,20 +388,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		07D98D99286AEB6100C5A8A0 /* XCRemoteSwiftPackageReference "sphere-ios-framework" */ = {
+		07FE3E962CBF8D520005609D /* XCRemoteSwiftPackageReference "sphere-ios-framework" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/GISTDAsphere/sphere-ios-framework.git";
+			repositoryURL = "https://github.com/GISTDAsphere/sphere-ios-framework";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				minimumVersion = 1.1.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		07D98D9A286AEB6100C5A8A0 /* SphereSDK */ = {
+		07FE3E972CBF8D520005609D /* SphereSDK */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 07D98D99286AEB6100C5A8A0 /* XCRemoteSwiftPackageReference "sphere-ios-framework" */;
+			package = 07FE3E962CBF8D520005609D /* XCRemoteSwiftPackageReference "sphere-ios-framework" */;
 			productName = SphereSDK;
 		};
 /* End XCSwiftPackageProductDependency section */
